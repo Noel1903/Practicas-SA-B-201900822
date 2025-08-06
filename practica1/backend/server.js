@@ -2,15 +2,12 @@
 
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./db');
 
 const productRoutes = require('./routes/productRoute');
 
 const app = express();
 const PORT = 3000;
 
-//conexión con mongoDB
-//connectDB();
 
 
 

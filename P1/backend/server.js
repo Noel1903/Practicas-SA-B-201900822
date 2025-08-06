@@ -1,22 +1,18 @@
 //server.js - main de la practica
 
-const express = require('express');
-const cors = require('cors');
-
+const express = require('express');//creacion con express
+const cors = require('cors');//utilizacion de cors
+//instancia del enrutador de los productos
 const productRoutes = require('./routes/productRoute');
 
 const app = express();
-const PORT = 3000;
-
-
-
+const PORT = 3000;//este es el puerto que se va a utilizar
 
 //middlewares
 app.use(cors());
 app.use(express.json());
 
-
-//rutas
+//rutas creadas para los productos
 app.use('/product',productRoutes);
 
 //Ruta base GET para verificar servidor

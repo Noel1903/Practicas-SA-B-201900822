@@ -1,9 +1,0 @@
-Definición de modulos
--Creación de inventarios
-    -Nombre
-    -Cantidad
-    -Precio
--Eliminar producto de inventario
--Mostrar lista de productos
--Mostrar la lista de productos ordenados por precio y/o cantidad
--Buscar un producto por su nombre y mostrar su información

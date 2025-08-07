@@ -42,24 +42,60 @@ El sistema está **abierto a extensión pero cerrado a modificación**:
 ### Ejemplo funcional
 
 ```js
-//Se usa un nuevo metodo para ordenar los productos por precio y cantidad, ademas que este no se puede llamar de otra manera del lado de las rutas, eso no se puede modificar 
+// Clase base
+class Shape {
+  area() {
+    throw new Error('Método area() debe ser implementado');
+  }
+}
 
-// productController.js
-const getProductsSorted = (req, res) => {
-  const { sortBy = 'price', order = 'asc' } = req.query;
+// Clases concretas
+class Rectangle extends Shape {
+  constructor(width, height) {
+    super();
+    this.width = width;
+    this.height = height;
+  }
+  area() {
+    return this.width * this.height;
+  }
+}
 
-  const sorted = [...products].sort((a, b) =>
-    order === 'desc' ? b[sortBy] - a[sortBy] : a[sortBy] - b[sortBy]
-  );
+class Circle extends Shape {
+  constructor(radius) {
+    super();
+    this.radius = radius;
+  }
+  area() {
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+}
 
-  return res.json(sorted);
-};
+class Triangle extends Shape {
+  constructor(base, height) {
+    super();
+    this.base = base;
+    this.height = height;
+  }
+  area() {
+    return (this.base * this.height) / 2;
+  }
+}
 
 
-//productRoute
-router.get('/list_sort',productController.getProductsSorted);
+function printArea(shape) {
+  console.log(`Área: ${shape.area()}`);
+}
+
+// Uso
+const shapes = [
+  new Rectangle(4, 5),
+  new Circle(3),
+  new Triangle(4, 6) 
+];
+
+shapes.forEach(shape => printArea(shape));
 ```
-
 ---
 
 ## L — Liskov Substitution Principle (LSP)
